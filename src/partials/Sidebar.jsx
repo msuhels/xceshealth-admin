@@ -1220,7 +1220,7 @@ function Sidebar({
             </h3>
             <ul className="mt-3">
               {/* Authentication */}
-              <SidebarLinkGroup>
+              {/* <SidebarLinkGroup>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
@@ -1243,7 +1243,6 @@ function Sidebar({
                               Authentication
                             </span>
                           </div>
-                          {/* Icon */}
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && 'rotate-180'}`}
@@ -1257,14 +1256,14 @@ function Sidebar({
                       <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                         <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>
                           <li className="mb-1 last:mb-0">
-                            <NavLink end to="/signin" className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate">
+                            <NavLink end to="/auth/sign-in" className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate">
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Sign in
                               </span>
                             </NavLink>
                           </li>
                           <li className="mb-1 last:mb-0">
-                            <NavLink end to="/signup" className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate">
+                            <NavLink end to="/auth/sign-up" className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate">
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Sign up
                               </span>
@@ -1282,9 +1281,9 @@ function Sidebar({
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Onboarding */}
-              <SidebarLinkGroup>
+              {/* <SidebarLinkGroup>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
@@ -1313,7 +1312,6 @@ function Sidebar({
                               Onboarding
                             </span>
                           </div>
-                          {/* Icon */}
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && 'rotate-180'}`}
@@ -1359,9 +1357,9 @@ function Sidebar({
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
               {/* Components */}
-              <SidebarLinkGroup activecondition={pathname.includes('component')}>
+              {/* <SidebarLinkGroup activecondition={pathname.includes('component')}>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
@@ -1396,7 +1394,6 @@ function Sidebar({
                               Components
                             </span>
                           </div>
-                          {/* Icon */}
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && 'rotate-180'}`}
@@ -1583,7 +1580,7 @@ function Sidebar({
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
             </ul>
           </div>
         </div>

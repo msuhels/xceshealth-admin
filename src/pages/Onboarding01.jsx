@@ -39,7 +39,7 @@ function Onboarding01() {
                   </svg>
                 </Link>
                 <div className="text-sm">
-                  Have an account? <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" to="/signin">Sign In</Link>
+                  Have an account? <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" to="/auth/sign-in">Sign In</Link>
                 </div>
               </div>
 
