@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+
 import UserTableItem from './UserTableItems'; // ✅ Import properly
 
 function UsersTable({ users }) {
 
+
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative">
       <header className="px-5 py-4">
+
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">
           All users <span className="text-slate-400 dark:text-slate-500 font-medium">{users.length}</span>
         </h2>

@@ -45,22 +45,28 @@ function Users() {
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
+
                 {/* Add customer button */}
                 <AddUserModal/>
               </div>
             </div>
             {/* Table */}
             <UsersTable users={users}/>
+
             {/* Pagination */}
             <div className="mt-8">
               <PaginationClassic />
             </div>
+
           </div>
         </main>
       </div>
+
     </div>
   );
 }
+
+
 
 
 export default Users;
