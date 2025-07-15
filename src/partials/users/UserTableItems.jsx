@@ -1,6 +1,5 @@
-import React from 'react';
 
-function CustomersTableItem(props) {
+function UsersTableItem(props) {
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -64,4 +63,4 @@ function CustomersTableItem(props) {
   );
 }
 
-export default CustomersTableItem;
+export default UsersTableItem;
