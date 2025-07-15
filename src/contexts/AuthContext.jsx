@@ -10,15 +10,15 @@ export function AuthProvider({ children }) {
 
   const [user, setUser] = useState(() => {
     const cookie = Cookies.get("user_token");
-    return cookie ? JSON.parse(cookie) : undefined;
+    return cookie ? JSON.parse(cookie)?.user : undefined;
   });
 
-  const saveSession = (user) => {
+  const saveSession = (userData) => {
+    console.log("user",userData);
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 7);
-    Cookies.set("user_token", JSON.stringify(user), {
-      expires: expirationDate});
-    setUser(user);
+    Cookies.set("user_token", JSON.stringify(userData), {expires: expirationDate});
+    setUser(userData?.user);
   };
 
   const removeSession = (redirectTo) => {
@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user,
-        isAuthenticated: !!user?.token,
+        isAuthenticated: !!user,
         saveSession,
         removeSession,
       }}

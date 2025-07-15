@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../utils/Transition';
-
+import { useAuthContext } from '../contexts/AuthContext';
 import UserAvatar from '../images/user-avatar-32.png';
 
 function DropdownProfile({
@@ -9,10 +9,13 @@ function DropdownProfile({
 }) {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const { removeSession } = useAuthContext();
   const trigger = useRef(null);
   const dropdown = useRef(null);
-
+  const handleLogout = () => {
+    removeSession();
+    setDropdownOpen(!dropdownOpen)
+  }
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -85,7 +88,7 @@ function DropdownProfile({
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
                 to="/auth/sign-in"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={handleLogout}
               >
                 Sign Out
               </Link>
