@@ -5,10 +5,10 @@ import Header from '../../partials/Header';
 import DeleteButton from '../../partials/actions/DeleteButton';
 import DateSelect from '../../components/DateSelect';
 import FilterButton from '../../components/DropdownFilter';
-import CustomersTable from '../../partials/customers/CustomersTable';
+import UsersTable from '../../partials/users/UserTable';
 import PaginationClassic from '../../components/PaginationClassic';
 
-function Customers() {
+function Users() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -65,7 +65,7 @@ function Customers() {
             </div>
 
             {/* Table */}
-            <CustomersTable selectedItems={handleSelectedItems} />
+            <UsersTable selectedItems={handleSelectedItems} />
 
             {/* Pagination */}
             <div className="mt-8">
@@ -81,4 +81,4 @@ function Customers() {
   );
 }
 
-export default Customers;
+export default Users;

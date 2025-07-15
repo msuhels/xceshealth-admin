@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Customer from './CustomersTableItem';
+import user from './UserTableItems';
 
 import Image01 from '../../images/user-40-01.jpg';
 import Image02 from '../../images/user-40-02.jpg';
@@ -12,11 +12,11 @@ import Image08 from '../../images/user-40-08.jpg';
 import Image09 from '../../images/user-40-09.jpg';
 import Image10 from '../../images/user-40-10.jpg';
 
-function CustomersTable({
+function UsersTable({
   selectedItems
 }) {
 
-  const customers = [
+  const users = [
     {
       id: '0',
       image: Image01,
@@ -144,7 +144,7 @@ function CustomersTable({
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    setList(customers);
+    setList(users);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -173,7 +173,7 @@ function CustomersTable({
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative">
       <header className="px-5 py-4">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">All Customers <span className="text-slate-400 dark:text-slate-500 font-medium">248</span></h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">All users <span className="text-slate-400 dark:text-slate-500 font-medium">248</span></h2>
       </header>
       <div>
 
@@ -223,22 +223,22 @@ function CustomersTable({
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-700">
               {
-                list.map(customer => {
+                list.map(user => {
                   return (
-                    <Customer
-                      key={customer.id}
-                      id={customer.id}
-                      image={customer.image}
-                      name={customer.name}
-                      email={customer.email}
-                      location={customer.location}
-                      orders={customer.orders}
-                      lastOrder={customer.lastOrder}
-                      spent={customer.spent}
-                      refunds={customer.refunds}
-                      fav={customer.fav}
+                    <user
+                      key={user.id}
+                      id={user.id}
+                      image={user.image}
+                      name={user.name}
+                      email={user.email}
+                      location={user.location}
+                      orders={user.orders}
+                      lastOrder={user.lastOrder}
+                      spent={user.spent}
+                      refunds={user.refunds}
+                      fav={user.fav}
                       handleClick={handleClick}
-                      isChecked={isCheck.includes(customer.id)}
+                      isChecked={isCheck.includes(user.id)}
                     />
                   )
                 })
@@ -252,4 +252,4 @@ function CustomersTable({
   );
 }
 
-export default CustomersTable;
+export default UsersTable;
