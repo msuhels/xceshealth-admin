@@ -6,17 +6,21 @@ import { AuthProvider } from './contexts/AuthContext';
 import App from './App';
 
 import axios from "axios";
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 axios.defaults.baseURL = `${import.meta.env.VITE_API_BASE_URL}`;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
-      <ThemeProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </ThemeProvider>
+      </Provider>
     </Router>
   </React.StrictMode>
 );

@@ -20,6 +20,9 @@ import { initializeResInterceptor } from './utils/axiosClient';
 import { useAuthContext } from './contexts/AuthContext';
 import PrivateRoutes from './hoc/PrivateRoutes';
 
+
+
+
 function App() {
 
   const location = useLocation();

@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Sidebar from '../../partials/Sidebar';
 import Header from '../../partials/Header';
-import DeleteButton from '../../partials/actions/DeleteButton';
-import DateSelect from '../../components/DateSelect';
-import FilterButton from '../../components/DropdownFilter';
 import UsersTable from '../../partials/users/UserTable';
 import PaginationClassic from '../../components/PaginationClassic';
+import { useDispatch , useSelector } from 'react-redux';
+import { getUsersAsync } from '../../store/features/users/userApi';
+import AddUserModal from './AdduserModal';
 
 function Users() {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const dispatch = useDispatch();
+  const { users , error , status } = useSelector((state)=>state.users);
 
-  const handleSelectedItems = (selectedItems) => {
-    setSelectedItems([...selectedItems]);
-  };
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(()=>{
+    dispatch(getUsersAsync());
+  },[]);
 
   return (
     <div className="flex h-[100dvh] overflow-hidden">
@@ -37,35 +39,19 @@ function Users() {
 
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
-                <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Customers ✨</h1>
+                <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Users</h1>
               </div>
 
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
-                {/* Delete button */}
-                <DeleteButton selectedItems={selectedItems} />
-
-                {/* Dropdown */}
-                <DateSelect />
-                
-                {/* Filter button */}
-                <FilterButton align="right" />
 
                 {/* Add customer button */}
-                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                  <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                    <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                  </svg>
-                  <span className="hidden xs:block ml-2">Add Customer</span>
-                </button>
-                
+                <AddUserModal/>
               </div>
-
             </div>
-
             {/* Table */}
-            <UsersTable selectedItems={handleSelectedItems} />
+            <UsersTable users={users}/>
 
             {/* Pagination */}
             <div className="mt-8">
@@ -74,11 +60,13 @@ function Users() {
 
           </div>
         </main>
-
       </div>
 
     </div>
   );
 }
+
+
+
 
 export default Users;
