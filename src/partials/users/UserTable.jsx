@@ -10,7 +10,7 @@ function UsersTable({ users }) {
       <header className="px-5 py-4">
 
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">
-          All users <span className="text-slate-400 dark:text-slate-500 font-medium">{users.length}</span>
+          All users <span className="text-slate-400 dark:text-slate-500 font-medium">{users?.length}</span>
         </h2>
       </header>
       <div className="overflow-x-auto">
@@ -28,14 +28,14 @@ function UsersTable({ users }) {
           <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-700">
             {users.map((user) => (
               <UserTableItem
-                key={user._id}
-                id={user._id}
-                name={user.name}
-                email={user.email}
-                phone={user.phone}
-                address={user.address}
-                role={user.role}
-                isActive={user.isActive}
+                key={user?._id}
+                id={user?._id}
+                name={user?.name}
+                email={user?.email}
+                phone={user?.phone}
+                address={user?.address}
+                role={user?.role}
+                isActive={user?.isActive}
               />
             ))}
           </tbody>

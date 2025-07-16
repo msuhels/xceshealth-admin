@@ -5,18 +5,18 @@ import Header from '../../partials/Header';
 import UsersTable from '../../partials/users/UserTable';
 import PaginationClassic from '../../components/PaginationClassic';
 import { useDispatch , useSelector } from 'react-redux';
-import { getUsersAsync } from '../../store/features/users/userApi';
+import { getPathologistAsync } from '../../store/features/users/userApi';
+import AddUserModal from './AdduserModal';
 
-
-function Users() {
+function Pathologist() {
 
   const dispatch = useDispatch();
-  const { users , error , status } = useSelector((state)=>state.users);
+  const { pathologists , error , status } = useSelector((state)=>state.users);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(()=>{
-    dispatch(getUsersAsync());
+    dispatch(getPathologistAsync());
   },[]);
 
   return (
@@ -39,7 +39,7 @@ function Users() {
 
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
-                <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Users</h1>
+                <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Pathologists</h1>
               </div>
 
               {/* Right: Actions */}
@@ -47,11 +47,11 @@ function Users() {
 
 
                 {/* Add customer button */}
-                {/* <AddUserModal/> */}
+                <AddUserModal buttonText={'Invite Pathologist'} role={'pathologist'}/>
               </div>
             </div>
             {/* Table */}
-            <UsersTable users={users}/>
+            <UsersTable users={pathologists}/>
 
             {/* Pagination */}
             <div className="mt-8">
@@ -66,7 +66,4 @@ function Users() {
   );
 }
 
-
-
-
-export default Users;
+export default  Pathologist;
