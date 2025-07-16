@@ -3,13 +3,18 @@ import ModalBasic from '../../components/ModalBasic';
 import { ADD_USERS } from '../../api/apiUrl';
 import { axiosClient } from '../../utils/axiosClient';
 import { useDispatch } from 'react-redux';
-import { getUsersAsync } from '../../store/features/users/userApi';
-function AddUserModal() {
+import { getTutorsAsync , getPathologistAsync } from '../../store/features/users/userApi';
+import { FcInvite } from "react-icons/fc";
+import { useToast } from '../../contexts/ToastContext'; // adjust path
+
+function AddUserModal({buttonText,role}) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        role: 'tutor',
+        role: role,
     });
+    const { showToast } = useToast();
+
     const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(false);
@@ -28,10 +33,16 @@ function AddUserModal() {
         try {
             await axiosClient.post(ADD_USERS,formData);
             setFeedbackModalOpen(false);
-            setFormData({ name: '', email: '', role: 'user' });
-            dispatch(getUsersAsync());
+            setFormData({ name: '', email: '', role: role });
+            showToast('success', 'Invitation sent successfully!');
+            if(role === 'tutor'){
+                dispatch(getTutorsAsync());
+            }else{
+                dispatch(getPathologistAsync());
+            }
         } catch (error) {
             console.error('Add user failed:', error);
+            showToast('error', error.response.data?.message || "errpr ");
             // You may want to show a toast or error message here
         } finally {
             setLoading(false);
@@ -44,10 +55,8 @@ function AddUserModal() {
             aria-controls="feedback-modal"
             onClick={(e) => { e.stopPropagation(); setFeedbackModalOpen(true); }}
         >
-            <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-            </svg>
-            <span className="hidden xs:block ml-2">Add User</span>
+            <FcInvite className="w-4 h-4 fill-current shrink-0" />
+            <span className="hidden xs:block ml-2">{buttonText}</span>
         </button>
         <ModalBasic id="feedback-modal" modalOpen={feedbackModalOpen} setModalOpen={setFeedbackModalOpen} title="Add User">
             {/* Modal content */}
@@ -85,24 +94,6 @@ function AddUserModal() {
                                 onChange={handleChange}
                             />
                         </div>
-
-                        {/* Role */}
-                        <div>
-                            <label htmlFor="role" className="block text-sm font-medium mb-1">
-                                Role <span className="text-rose-500">*</span>
-                            </label>
-                            <select
-                                name="role"
-                                id="role"
-                                required
-                                className="form-select w-full px-2 py-1"
-                                value={formData.role}
-                                onChange={handleChange}
-                            >
-                                <option value="tutor">Tutor</option>
-                                <option value="pathologist">Pathologist</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
 
@@ -121,7 +112,7 @@ function AddUserModal() {
                             className="btn-sm bg-indigo-500 hover:bg-indigo-600 text-white"
                             disabled={loading}
                         >
-                            {loading ? 'Adding...' : 'Add User'}
+                            {loading ? 'Inviting...' : buttonText }
                         </button>
                     </div>
                 </div>

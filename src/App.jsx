@@ -12,6 +12,8 @@ import './charts/ChartjsConfig';
 // Import pages
 import Dashboard from './pages/Dashboard';
 import Users from './pages/users/Users';
+import Tutors from './pages/users/Tutors';
+import Pathologist from './pages/users/Pathologist';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import ResetPassword from './pages/ResetPassword';
@@ -45,7 +47,10 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
         <Route element={<PrivateRoutes />} >
           <Route exact path="/" element={<Dashboard />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/users/users-list" element={<Users />} />
+          <Route path="/users/users-invite" element={<Users />} />
+          <Route path="/users/tutors" element={<Tutors />} />
+          <Route path="/users/pathologists" element={<Pathologist />} />
         </Route>
       </Routes>
     </>

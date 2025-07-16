@@ -5,18 +5,18 @@ import Header from '../../partials/Header';
 import UsersTable from '../../partials/users/UserTable';
 import PaginationClassic from '../../components/PaginationClassic';
 import { useDispatch , useSelector } from 'react-redux';
-import { getUsersAsync } from '../../store/features/users/userApi';
+import { getTutorsAsync } from '../../store/features/users/userApi';
+import AddUserModal from './AdduserModal';
 
-
-function Users() {
+function Tutors() {
 
   const dispatch = useDispatch();
-  const { users , error , status } = useSelector((state)=>state.users);
-
+  const { tutors , error , status } = useSelector((state)=>state.users);
+  
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(()=>{
-    dispatch(getUsersAsync());
+    dispatch(getTutorsAsync());
   },[]);
 
   return (
@@ -47,11 +47,11 @@ function Users() {
 
 
                 {/* Add customer button */}
-                {/* <AddUserModal/> */}
+                <AddUserModal buttonText={'Invite Tutor'} role={'tutor'}/>
               </div>
             </div>
             {/* Table */}
-            <UsersTable users={users}/>
+            <UsersTable users={tutors}/>
 
             {/* Pagination */}
             <div className="mt-8">
@@ -66,7 +66,4 @@ function Users() {
   );
 }
 
-
-
-
-export default Users;
+export default Tutors;
