@@ -58,7 +58,7 @@ function AddUserModal({buttonText,role}) {
             <FcInvite className="w-4 h-4 fill-current shrink-0" />
             <span className="hidden xs:block ml-2">{buttonText}</span>
         </button>
-        <ModalBasic id="feedback-modal" modalOpen={feedbackModalOpen} setModalOpen={setFeedbackModalOpen} title="Add User">
+        <ModalBasic id="feedback-modal" modalOpen={feedbackModalOpen} setModalOpen={setFeedbackModalOpen} title={buttonText}>
             {/* Modal content */}
             <form onSubmit={handleSubmit}>
                 <div className="px-5 py-4">
