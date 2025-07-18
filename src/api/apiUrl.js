@@ -11,5 +11,6 @@ export const GET_PATHOLOGIST = '/admin/get-pathologists';
 export const ADD_USERS = '/admin/add-users';
 
 export const ADD_PRODUCT = '/admin/add-product';
+export const UPDATE_PRODUCT = '/admin/update-product';
 export const GET_PRODUCT = '/admin/get-products';
 export const GET_PRODUCT_BY_ID = '/admin/get-product';

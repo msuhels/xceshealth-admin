@@ -23,6 +23,7 @@ import Profile from './pages/setttings/Profile';
 
 import Products from './pages/products/Products';
 import AddProducts from './pages/products/AddProducts';
+import UpdateProduct from './pages/products/UpdateProduct'
 import { initializeResInterceptor } from './utils/axiosClient';
 import { useAuthContext } from './contexts/AuthContext';
 import PrivateRoutes from './hoc/PrivateRoutes';
@@ -59,6 +60,7 @@ function App() {
           <Route path="/settings/account" element={<Profile />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/add-product" element={<AddProducts />} />
+          <Route path="/products/edit/:id" element={<UpdateProduct />} />
         </Route>
       </Routes>
     </>

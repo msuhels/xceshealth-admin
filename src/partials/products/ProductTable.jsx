@@ -1,11 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FiEdit, FiTrash2 } from 'react-icons/fi'; // npm install react-icons
 
-function ProductTable({ products }) {
+function ProductTable({ products, onDelete }) {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 relative">
       <header className="px-5 py-4">
         <h2 className="font-semibold text-slate-800 dark:text-slate-100">
-          All Products <span className="text-slate-400 dark:text-slate-500 font-medium">{products?.length}</span>
+          All Products{' '}
+          <span className="text-slate-400 dark:text-slate-500 font-medium">{products?.length}</span>
         </h2>
       </header>
       <div className="overflow-x-auto">
@@ -18,6 +23,7 @@ function ProductTable({ products }) {
               <th className="px-2 py-3 text-left">Price</th>
               <th className="px-2 py-3 text-left">Stock</th>
               <th className="px-2 py-3 text-left">Status</th>
+              <th className="px-2 py-3 text-left">Actions</th>
             </tr>
           </thead>
           <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-700">
@@ -39,11 +45,31 @@ function ProductTable({ products }) {
                 <td className="px-2 py-3 whitespace-nowrap">${product?.price}</td>
                 <td className="px-2 py-3 whitespace-nowrap">{product?.stock}</td>
                 <td className="px-2 py-3 whitespace-nowrap">
-                  <span className={`inline-block px-2 py-0.5 text-xs rounded-full font-medium ${
-                    product?.isActive ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
-                  }`}>
+                  <span
+                    className={`inline-block px-2 py-0.5 text-xs rounded-full font-medium ${
+                      product?.isActive ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
+                    }`}
+                  >
                     {product?.isActive ? 'Active' : 'Inactive'}
                   </span>
+                </td>
+                <td className="px-2 py-3 whitespace-nowrap">
+                  <div className="flex space-x-3 items-center">
+                    <button
+                      className="text-indigo-500 hover:text-indigo-700"
+                      onClick={() => navigate(`/products/edit/${product?._id}`)}
+                      title="Edit"
+                    >
+                      <FiEdit size={16} />
+                    </button>
+                    <button
+                      className="text-red-500 hover:text-red-700"
+                      onClick={() => onDelete(product?._id)}
+                      title="Delete"
+                    >
+                      <FiTrash2 size={16} />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
