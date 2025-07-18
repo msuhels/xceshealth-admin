@@ -5,10 +5,11 @@ import AuthDecoration from '../images/auth-decoration.png';
 import { SIGNIN } from '../api/apiUrl';
 import axios from 'axios';
 import {useAuthContext} from "../contexts/AuthContext";
-
+import { useToast } from '../contexts/ToastContext';
 function Signin() {
   const navigate = useNavigate();
   const { saveSession } = useAuthContext();
+  const { showToast } = useToast();
 
   const [formData, setFormData] = useState({ email: '', password: '' });
   console.log(formData)
@@ -28,9 +29,10 @@ function Signin() {
       const response = await axios.post(`${SIGNIN}`,formData);
       console.log("response.data",response.data);
       saveSession(response.data);
+      showToast('success', 'successfully loggedin');
       navigate('/'); // redirect after login
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      showToast('error', error?.response?.data?.message || error?.message );
     } finally {
       setLoading(false);
     }
@@ -85,8 +87,8 @@ function Signin() {
 
                 {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
 
-                <div className="flex items-center justify-end mt-6">
-                  {/* <Link className="text-sm underline hover:no-underline" to="/reset-password">Forgot Password?</Link> */}
+                <div className="flex items-center justify- mt-6">
+                  <Link className="text-sm underline hover:no-underline" to="/auth/forgot-password">Forgot Password?</Link>
                   <button
                     type="submit"
                     className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"

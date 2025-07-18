@@ -11,14 +11,14 @@ import AddUserModal from './AdduserModal';
 function Pathologist() {
 
   const dispatch = useDispatch();
-  const { pathologists , error , status } = useSelector((state)=>state.users);
+  const { pathologists } = useSelector((state)=>state.users);
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ sidebarOpen , setSidebarOpen ] = useState(false);
 
   useEffect(()=>{
     dispatch(getPathologistAsync());
   },[]);
-
+         
   return (
     <div className="flex h-[100dvh] overflow-hidden">
 

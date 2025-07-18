@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUsersAsync , getTutorsAsync , getPathologistAsync } from './userApi';
+import { getUsersAsync , getTutorsAsync , getPathologistAsync , getUserInfoAsync } from './userApi';
 
 const initialState = {
   users: [],
@@ -57,7 +57,20 @@ const usersSlice = createSlice({
       .addCase(getPathologistAsync.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+      // for logged in user info
+      .addCase(getUserInfoAsync.pending, (state) => {
+        state.status = 'pending';
+      })
+      .addCase(getUserInfoAsync.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.user = action.payload;
+      })
+      .addCase(getUserInfoAsync.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
+
   },
 });
 
