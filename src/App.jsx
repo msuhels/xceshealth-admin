@@ -27,7 +27,8 @@ import UpdateProduct from './pages/products/UpdateProduct'
 import { initializeResInterceptor } from './utils/axiosClient';
 import { useAuthContext } from './contexts/AuthContext';
 import PrivateRoutes from './hoc/PrivateRoutes';
-
+import Calendly from './pages/Calendly';
+import Appointment from './pages/Appointment';
 
 
 function App() {
@@ -61,6 +62,8 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/add-product" element={<AddProducts />} />
           <Route path="/products/edit/:id" element={<UpdateProduct />} />
+          <Route path="/calendly" element={<Calendly />} />
+          <Route path="/appointment" element={<Appointment />} />
         </Route>
       </Routes>
     </>
