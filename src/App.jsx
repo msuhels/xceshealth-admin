@@ -28,6 +28,8 @@ import { initializeResInterceptor } from './utils/axiosClient';
 import { useAuthContext } from './contexts/AuthContext';
 import PrivateRoutes from './hoc/PrivateRoutes';
 
+import StripeContainer from './pages/StripeContainer';
+
 
 
 function App() {
@@ -61,6 +63,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/add-product" element={<AddProducts />} />
           <Route path="/products/edit/:id" element={<UpdateProduct />} />
+          <Route path="/stripe" element={<StripeContainer />} />
         </Route>
       </Routes>
     </>
