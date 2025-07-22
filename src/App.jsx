@@ -29,6 +29,8 @@ import { useAuthContext } from './contexts/AuthContext';
 import PrivateRoutes from './hoc/PrivateRoutes';
 import Calendly from './pages/Calendly';
 import Appointment from './pages/Appointment';
+import StripeContainer from './pages/StripeContainer';
+
 
 
 function App() {
@@ -64,6 +66,7 @@ function App() {
           <Route path="/products/edit/:id" element={<UpdateProduct />} />
           <Route path="/calendly" element={<Calendly />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/stripe" element={<StripeContainer />} />
         </Route>
       </Routes>
     </>
