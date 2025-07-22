@@ -64,8 +64,8 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/add-product" element={<AddProducts />} />
           <Route path="/products/edit/:id" element={<UpdateProduct />} />
-          <Route path="/calendly" element={<Calendly />} />
-          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/calendly/connect" element={<Calendly />} />
+          <Route path="/calendly/appointment" element={<Appointment />} />
           <Route path="/stripe" element={<StripeContainer />} />
         </Route>
       </Routes>

@@ -7,7 +7,7 @@ import { InlineWidget, useCalendlyEventListener } from 'react-calendly';
 function Appointment() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-    const calendlyUrl  = 'https://calendly.com/ibr-ronik'
+  const calendlyUrl  = 'https://calendly.com/ibr-ronik'
   useCalendlyEventListener({
     onProfilePageViewed: () => console.log("onProfilePageViewed"),
     onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
@@ -42,14 +42,14 @@ function Appointment() {
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
-                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white"
+                {/* <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white"
                     aria-controls="feedback-modal"
                 >
                     <span className="hidden xs:block ml-2">connects</span>
                     <a href="http://localhost:5000/api/calendly/oauth">
                         Connect Calendly
                     </a>
-                </button>
+                </button> */}
                 {/* Add customer button */}
                 {/* <AddUserModal buttonText={'Invite Tutor'} role={'tutor'}/> */}
                 {/* <div
