@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { axiosClient } from "../../utils/axiosClient";
+import { CREATE_STRIPE_PAYMENT } from "../../api/apiUrl";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -9,13 +11,19 @@ const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/user/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 1000, currency: "inr" }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+    const createPaymentIntent = async () => {
+      try {
+        const { data } = await axiosClient.post( CREATE_STRIPE_PAYMENT, {
+          amount: 100,
+          currency: "usd",
+        });
+        setClientSecret(data.clientSecret);
+      } catch (error) {
+        console.error("Error creating PaymentIntent:", error);
+      }
+    };
+
+    createPaymentIntent();
   }, []);
 
   const handleSubmit = async (e) => {

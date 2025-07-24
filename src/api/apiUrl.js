@@ -16,3 +16,6 @@ export const GET_PRODUCT = '/admin/get-products';
 export const GET_PRODUCT_BY_ID = '/admin/get-product';
 
 export const GET_ALL_APPOINTMENTS = '/admin/get-all-appointments';
+
+//stripe payment 
+export const CREATE_STRIPE_PAYMENT = '/user/create-payment-intent';
