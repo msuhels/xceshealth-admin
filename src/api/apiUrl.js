@@ -14,3 +14,5 @@ export const ADD_PRODUCT = '/admin/add-product';
 export const UPDATE_PRODUCT = '/admin/update-product';
 export const GET_PRODUCT = '/admin/get-products';
 export const GET_PRODUCT_BY_ID = '/admin/get-product';
+
+export const GET_ALL_APPOINTMENTS = '/admin/get-all-appointments';

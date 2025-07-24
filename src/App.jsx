@@ -30,7 +30,7 @@ import PrivateRoutes from './hoc/PrivateRoutes';
 import Calendly from './pages/Calendly';
 import Appointment from './pages/Appointment';
 import StripeContainer from './pages/StripeContainer';
-
+import AppointmentDetails from './pages/appointments/Appointments';
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
         <Route path="/auth/sign-up" element={<Signup />} />
           <Route path="/auth/reset-password" element={<ResetPassword />} />
           <Route path="/auth/forgot-password" element={<ForgotPassword />} />
-        <Route element={<PrivateRoutes />} >
+          <Route element={<PrivateRoutes />} >
           <Route exact path="/" element={<Dashboard />} />
           <Route path="/users/users-list" element={<Users />} />
           <Route path="/users/users-invite" element={<Users />} />
@@ -66,6 +66,7 @@ function App() {
           <Route path="/products/edit/:id" element={<UpdateProduct />} />
           <Route path="/calendly/connect" element={<Calendly />} />
           <Route path="/calendly/appointment" element={<Appointment />} />
+          <Route path="/appointment" element={<AppointmentDetails />} />
           <Route path="/stripe" element={<StripeContainer />} />
         </Route>
       </Routes>
