@@ -29,7 +29,7 @@ import { useAuthContext } from './contexts/AuthContext';
 import PrivateRoutes from './hoc/PrivateRoutes';
 import Calendly from './pages/Calendly';
 import Appointment from './pages/Appointment';
-import StripeContainer from './pages/StripeContainer';
+import StripeContainer from './pages/stripeCheckout/StripeContainer';
 import AppointmentDetails from './pages/appointments/Appointments';
 
 
