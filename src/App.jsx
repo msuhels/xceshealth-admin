@@ -31,6 +31,7 @@ import Calendly from './pages/Calendly';
 import Appointment from './pages/Appointment';
 import StripeContainer from './pages/stripeCheckout/StripeContainer';
 import AppointmentDetails from './pages/appointments/Appointments';
+import OrderList from './pages/order/List';
 
 
 function App() {
@@ -68,6 +69,8 @@ function App() {
           <Route path="/calendly/appointment" element={<Appointment />} />
           <Route path="/appointment" element={<AppointmentDetails />} />
           <Route path="/stripe" element={<StripeContainer />} />
+          <Route path="/orders" element={<OrderList />} />
+          
         </Route>
       </Routes>
     </>
