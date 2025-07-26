@@ -4,12 +4,12 @@ import { PiUsersDuotone } from "react-icons/pi";
 import { PiFolderUserBold } from "react-icons/pi";
 
 import SidebarLinkGroup from './SidebarLinkGroup';
-
+import { useAuthContext } from '../contexts/AuthContext';
 function Sidebar({
   sidebarOpen,
   setSidebarOpen
 }) {
-
+  const { user } = useAuthContext();
   const location = useLocation();
   const { pathname } = location;
 
@@ -186,6 +186,7 @@ function Sidebar({
                 }}
               </SidebarLinkGroup>
               {/* userlists */}
+              {user && user?.role === 'admin' && 
               <SidebarLinkGroup activecondition={pathname.includes('users')}>
                 {(handleClick, open) => {
                   return (
@@ -274,6 +275,7 @@ function Sidebar({
                   );
                 }}
               </SidebarLinkGroup>
+              }
               {/* Settings */}
               <SidebarLinkGroup activecondition={pathname.includes('settings')}>
                 {(handleClick, open) => {
@@ -410,7 +412,7 @@ function Sidebar({
                   );
                 }}
               </SidebarLinkGroup>
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('products') && 'bg-slate-900'}`}>
+              {/* <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('products') && 'bg-slate-900'}`}>
                 <NavLink
                   end
                   to="/products"
@@ -433,8 +435,8 @@ function Sidebar({
                     </span>
                   </div>
                 </NavLink>
-              </li>
-              <SidebarLinkGroup activecondition={pathname.includes('calendly')}>
+              </li> */}
+              {/* <SidebarLinkGroup activecondition={pathname.includes('calendly')}>
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
@@ -464,7 +466,6 @@ function Sidebar({
                               Calendly
                             </span>
                           </div>
-                          {/* Icon */}
                           <div className="flex shrink-0 ml-2">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && 'rotate-180'}`}
@@ -503,27 +504,13 @@ function Sidebar({
                               </span>
                             </NavLink>
                           </li>
-
-                          {/* <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/users/pathologists"
-                              className={({ isActive }) =>
-                                'block transition duration-150 truncate ' + (isActive ? 'text-indigo-500' : 'text-slate-400 hover:text-slate-200')
-                              }
-                            >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                                Pathologist - List
-                              </span>
-                            </NavLink>
-                          </li> */}
                         </ul>
                       </div>
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('appointment') && 'bg-slate-900'}`}>
+              </SidebarLinkGroup> */}
+              {/* <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('appointment') && 'bg-slate-900'}`}>
                 <NavLink
                   end
                   to="/appointment"
@@ -546,9 +533,9 @@ function Sidebar({
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
 
-              <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('orders') && 'bg-slate-900'}`}>
+              {/* <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${pathname.includes('orders') && 'bg-slate-900'}`}>
                 <NavLink
                   end
                   to="/orders"
@@ -565,7 +552,7 @@ function Sidebar({
                     </span>
                   </div>
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
 
